@@ -4,9 +4,15 @@
  */
 package com.mycompany.bookbooker;
 
-public class Admin extends Person {
+public class Controller_UserHome {
 
-    public Admin(String username, String password) {
-        super(username, password);
+    Person user;
+
+    public Controller_UserHome(Person person){
+        this.user = person;
+        new GUI_UserHome(user);
     }
+
+    
+
 }

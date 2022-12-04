@@ -12,23 +12,24 @@ public class GUI_UserHome {
 
     private static JFrame frame = null;
     private static JPanel panel;
+    
 
-    public GUI_UserHome() {
+    public GUI_UserHome(Person user) {
         
         if(frame == null) {
             
             frame = new JFrame();
             panel = new JPanel();
 
-            frame.setSize(350, 700);
+            frame.setSize(BookBooker.SCREEN_WIDTH, BookBooker.SCREEN_HEIGHT);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.add(panel);
 
             panel.setLayout(null);
 
             // New label
-            JLabel label = new JLabel("User Home");
-            label.setBounds(10, 20, 80, 25);
+            JLabel label = new JLabel("Welcome " + user.getUsername() + "!");
+            label.setBounds(10, 20, 200, 25);
             panel.add(label);
 
             frame.setVisible(true);

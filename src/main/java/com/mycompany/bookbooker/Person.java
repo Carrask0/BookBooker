@@ -8,10 +8,12 @@ public class Person {
 
     private final String username;
     private final String password;
+    private final Boolean isAdmin;
 
-    public Person(String username, String password) {
+    public Person(String username, String password, Boolean isAdmin) {
         this.username = username;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     // Getters
@@ -20,6 +22,9 @@ public class Person {
     }
     public String getPassword() {
         return password;
+    }
+    public Boolean getIsAdmin() {
+        return isAdmin;
     }
 
 }

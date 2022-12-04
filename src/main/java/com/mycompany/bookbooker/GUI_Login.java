@@ -24,12 +24,16 @@ public class GUI_Login implements ActionListener{
     private static JPasswordField passwordText;
     private static JButton loginButton;
     private static JLabel success;
+
+    Controller_Login controller;
     
-    public GUI_Login() {
+    public GUI_Login(Controller_Login controller, Boolean error) {
+
+        this.controller = controller;
         
         if(frame == null) {
             frame = new JFrame("BookBooker");
-            frame.setSize(350, 700);
+            frame.setSize(BookBooker.SCREEN_WIDTH, BookBooker.SCREEN_HEIGHT);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             panel = new JPanel();
@@ -58,13 +62,16 @@ public class GUI_Login implements ActionListener{
 
             // loginButton
             loginButton = new JButton("Login");
-            loginButton.addActionListener(new GUI_Login());
+            loginButton.addActionListener(new GUI_Login(this.controller, false));
             loginButton.setBounds(10, 80, 80, 25);
             panel.add(loginButton);
 
             // successLabel
             success = new JLabel("");
             success.setBounds(10, 110, 300, 25);
+            if(error) {
+                success.setText("Login failed. Please try again.");
+            }
             panel.add(success);
 
             frame.setVisible(true);
@@ -77,14 +84,9 @@ public class GUI_Login implements ActionListener{
         String user = userText.getText();
         String password  = passwordText.getText();
 
-        if (user.equals("admin") && password.equals("admin")) {
-            success.setText("Login successful!");
-            new GUI_UserHome();
-            frame.dispose();
-        }
-        else{
-            success.setText("Login failed!");
-        }
+        controller.login(user, password);
     }
+
+
 
 }

@@ -9,12 +9,30 @@ import java.util.ArrayList;
 public class Repository {
 
     // List of Books
-    private ArrayList<Book> books;
+    private ArrayList<Book> availableBooks;
+    private ArrayList<Book> loanedBooks;
+    private ArrayList<Person> persons;
 
 
     public Repository() {
-        books = new ArrayList<Book>();
+        availableBooks = new ArrayList<>();
+        loanedBooks = new ArrayList<Book>();
+        persons = new ArrayList<Person>();
 
+        // Add some users
+        persons.add(new Person("user1", "password1", false));
+        persons.add(new Person("user2", "password2", false));
+        persons.add(new Person("user3", "password3", false));
+
+    }
+
+    public Person findPerson(String username, String password) {
+        for (Person person : persons) {
+            if (person.getUsername().equals(username) && person.getPassword().equals(password)) {
+                return person;
+            }
+        }
+        return null;
     }
 
 }

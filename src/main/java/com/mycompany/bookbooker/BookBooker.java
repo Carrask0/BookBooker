@@ -5,24 +5,19 @@
 
 package com.mycompany.bookbooker;
 
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.event.*;
-
 public class BookBooker{
 
-    public BookBooker(){
+    public static final int SCREEN_WIDTH = 350;
+    public static final int SCREEN_HEIGHT = 700;
+    public static Repository repository;
 
+    public BookBooker(){
+        this.repository = new Repository();
     }
 
     public static void main(String[] args) {
         
-        new GUI_Login();
-        Repository repo = new Repository();
+        new BookBooker();
+        new Controller_Login();
     }
 }
