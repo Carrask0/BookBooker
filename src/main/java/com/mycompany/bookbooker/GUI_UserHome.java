@@ -10,26 +10,28 @@ import javax.swing.JLabel;
 
 public class GUI_UserHome {
 
-    private static JFrame frame;
+    private static JFrame frame = null;
     private static JPanel panel;
 
     public GUI_UserHome() {
+        
+        if(frame == null) {
+            
+            frame = new JFrame();
+            panel = new JPanel();
 
-        frame = new JFrame();
-        panel = new JPanel();
+            frame.setSize(350, 700);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.add(panel);
 
-        frame.setSize(350, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(panel);
+            panel.setLayout(null);
 
-        panel.setLayout(null);
+            // New label
+            JLabel label = new JLabel("User Home");
+            label.setBounds(10, 20, 80, 25);
+            panel.add(label);
 
-        frame.setVisible(true);
-
-        // New label
-        JLabel label = new JLabel("User Home");
-        label.setBounds(10, 20, 80, 25);
-        panel.add(label);
+            frame.setVisible(true);
+        }
     }
-
 }
