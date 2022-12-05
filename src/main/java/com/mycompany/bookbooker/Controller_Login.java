@@ -6,15 +6,15 @@ package com.mycompany.bookbooker;
 
 public class Controller_Login {
 
-    public Controller_Login(){
+    public Controller_Login() {
         new GUI_Login(this, false);
     }
 
-    public void login(String username, String password){
+    public void login(String username, String password) {
         Person person = BookBooker.repository.findPerson(username, password);
-        if(person != null){
-            if(person.getIsAdmin()){
-               //TODO new Controller_AdminHome(person);
+        if (person != null) {
+            if (person.getIsAdmin()) {
+                //TODO new Controller_AdminHome(person);
             } else {
                 new Controller_UserHome(person);
             }
@@ -22,7 +22,5 @@ public class Controller_Login {
             new GUI_Login(this, true);
         }
     }
-
-        
 
 }

@@ -11,7 +11,7 @@ public class Book {
     private String author;
     private String ISBN;
     private String genre;
-    
+
     public Book(String title, int year, String author, String ISBN, String genre) {
         this.title = title;
         this.year = year;
@@ -24,15 +24,19 @@ public class Book {
     public String getTitle() {
         return title;
     }
+
     public int getYear() {
         return year;
     }
+
     public String getAuthor() {
         return author;
     }
+
     public String getISBN() {
         return ISBN;
     }
+
     public String getGenre() {
         return genre;
     }

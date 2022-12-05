@@ -4,8 +4,8 @@
  */
 package com.mycompany.bookbooker;
 
-import java.awt.*;  
-import java.awt.event.*;  
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,11 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class GUI_Login implements ActionListener{
-    
+public class GUI_Login implements ActionListener {
+
     private static JFrame frame = null;
     private static JPanel panel;
-    
+
     private static JLabel userLabel;
     private static JTextField userText;
     private static JLabel passwordLabel;
@@ -26,17 +26,18 @@ public class GUI_Login implements ActionListener{
     private static JLabel success;
 
     Controller_Login controller;
-    
+
     public GUI_Login(Controller_Login controller, Boolean error) {
 
         this.controller = controller;
-        
-        if(frame == null) {
+
+        if (frame == null) {
+
+            //GUI INITIAL CONFIG
             frame = new JFrame("BookBooker");
+            panel = new JPanel();
             frame.setSize(BookBooker.SCREEN_WIDTH, BookBooker.SCREEN_HEIGHT);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-            panel = new JPanel();
             frame.add(panel);
             panel.setLayout(null);
 
@@ -69,24 +70,24 @@ public class GUI_Login implements ActionListener{
             // successLabel
             success = new JLabel("");
             success.setBounds(10, 110, 300, 25);
-            if(error) {
+            if (error) {
                 success.setText("Login failed. Please try again.");
             }
             panel.add(success);
 
             frame.setVisible(true);
         }
-        
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String user = userText.getText();
-        String password  = passwordText.getText();
+        String password = passwordText.getText();
 
-        controller.login(user, password);
+        // Empty userText and passwordText
+        userText.setText("");
+        passwordText.setText("");
+
+        this.controller.login(user, password);
     }
-
-
-
 }

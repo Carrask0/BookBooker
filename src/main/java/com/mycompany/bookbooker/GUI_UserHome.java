@@ -4,35 +4,65 @@
  */
 package com.mycompany.bookbooker;
 
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JButton;
 
-public class GUI_UserHome {
+public class GUI_UserHome implements ActionListener {
 
     private static JFrame frame = null;
     private static JPanel panel;
-    
+    private static JLabel label;
+    private static JButton searchBookButton;
+    private static JButton donateBookButton;
 
-    public GUI_UserHome(Person user) {
-        
-        if(frame == null) {
-            
-            frame = new JFrame();
-            panel = new JPanel();
+    Controller_UserHome controller;
+    Person user;
 
-            frame.setSize(BookBooker.SCREEN_WIDTH, BookBooker.SCREEN_HEIGHT);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.add(panel);
+    public GUI_UserHome(Controller_UserHome controller, Person user) {
+        this.controller = controller;
+        this.user = user;
 
-            panel.setLayout(null);
+        //GUI INITIAL CONFIG
+        frame = new JFrame();
+        panel = new JPanel();
+        frame.setSize(BookBooker.SCREEN_WIDTH, BookBooker.SCREEN_HEIGHT);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(panel);
+        panel.setLayout(null);
 
-            // New label
-            JLabel label = new JLabel("Welcome " + user.getUsername() + "!");
-            label.setBounds(10, 20, 200, 25);
-            panel.add(label);
+        // New label
+        JLabel label = new JLabel("Welcome " + this.user.getUsername() + "!");
+        label.setBounds(10, 20, 200, 25);
+        panel.add(label);
 
-            frame.setVisible(true);
+        // Add 'SEARCH BOOK' button
+        searchBookButton = new JButton("SEARCH BOOK");
+        searchBookButton.setBounds(10, 80, 200, 25);
+        searchBookButton.addActionListener(this);
+        panel.add(searchBookButton);
+
+        // Add 'DONATE BOOK' button
+        donateBookButton = new JButton("DONATE BOOK");
+        donateBookButton.setBounds(10, 120, 200, 25);
+        donateBookButton.addActionListener(this);
+        panel.add(donateBookButton);
+
+        frame.setVisible(true);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == searchBookButton) {
+            this.controller.changeViewSearch();
+
+        } else if (e.getSource() == donateBookButton) {
+            this.controller.changeViewDonate();
         }
     }
+
 }
